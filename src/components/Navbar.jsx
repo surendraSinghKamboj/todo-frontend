@@ -25,7 +25,7 @@ const Navbar = () => {
             <AiOutlineMenuUnfold className='text-white cursor-pointer' onClick={() => setOpen(!open)} />
         }
       </div>
-      <div className={`sm:hidden ${open ? "top-14 left-0" : "top-[-100%] left-[110%]"} transition-all fixed left-0 w-full bg-[#080c33a8] h-96`}>
+      <div className={`sm:hidden ${open ? "top-14 left-0" : "top-[-100%] left-[110%]"} nav_animation fixed left-0 w-full bg-[#080c33a8] h-96`}>
         <ul className='items-center flex flex-col h-14 gap-3 text-white'>
           <Link href={"/"}><li className='w-[200px] text-center hover:bg-emerald-600'>Home</li></Link>
           <Link href={"/About"}><li className='w-[200px] text-center hover:bg-emerald-600'>About</li></Link>
