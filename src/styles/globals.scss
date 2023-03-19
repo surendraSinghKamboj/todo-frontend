@@ -6,3 +6,10 @@
 .nav_animation{
 	transition: all 1s;
 }
+
+.background{
+	transform: rotateY(30deg);
+}
+.home{
+	perspective: 1000px;
+}

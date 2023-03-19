@@ -6,7 +6,7 @@ import { AiOutlineMenuUnfold, AiOutlineClose } from "react-icons/ai"
 const Navbar = () => {
   const [open, setOpen] = useState(false)
   return (
-    <header className='sticky w-full h-14 bg-[#080c33a8] flex items-center p-3 top-0'>
+    <header className='sticky w-full h-14 bg-[#080c33a8] z-10 flex items-center p-3 top-0'>
       <h1 className='text-white text-lg sm:text-xl flex-grow cursor-pointer' onClick={() => {
         window.scrollTo(0, 0)
       }}>Surendra Singh kamboj</h1>

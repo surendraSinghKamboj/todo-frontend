@@ -1,5 +1,6 @@
 import Head from 'next/head'
-
+import Homepage from '@/components/Home'
+import Background from '@/components/Background'
 
 export default function Home() {
   return (
@@ -12,9 +13,9 @@ export default function Home() {
       </Head>
 
       <main className='min-h-[100vh]'>
-          
+        <Homepage />
       </main>
-  
+
     </>
   )
 }
