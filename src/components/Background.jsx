@@ -3,7 +3,7 @@ import React from 'react'
 const Background = () => {
     return (
         <div
-            className='absolute flex background justify-center flex-col items-center top-14 right-0 w-[50vw] z-[-10] h-[50vh] bg-slate-700 backdrop-blur-md'>
+            className='absolute flex background justify-center flex-col items-center bottom-3 right-5 sm:top-14 sm:right-0 w-[50vw] z-[-10] h-[50vh]  backdrop-blur-md' style={{ background: "rgba(0,0,0,0)" }}>
             <p className='text-lg text-lime-400'>{"function"} <span className='text-yellow-500'>{"hello(params) "}</span>
                 <span className='text-red-400'>{"{"}</span>
             </p>
