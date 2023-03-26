@@ -8,6 +8,7 @@ const Search = () => {
 	const [searchTerm, setSearchTerm] = useState("");
 	const [data, setData] = useState([]);
 	const [current, setCurrent] = useState([]);
+	const [stat, setStat] = useState(0);
 
 	const handleSubmit = () => {
 		setCurrent([...current, { title, desc }]);
@@ -34,6 +35,7 @@ const Search = () => {
 		getData();
 	}, []);
 
+	// Search bar logic
 	useEffect(() => {
 		// main Logic
 		if (searchTerm) {
@@ -46,6 +48,18 @@ const Search = () => {
 			setData([...current]);
 		}
 	}, [searchTerm, current]);
+
+	//Update function
+	const updateTask = async (id) => {
+		try {
+			const response = await axios.put(`${host}task/${id}`);
+		} catch (error) {}
+	};
+
+	//Delete function
+	const deleteTask = async (id) => {
+		console.log(id);
+	};
 
 	return (
 		<>
@@ -91,14 +105,21 @@ const Search = () => {
 						<h3>You do not have any task</h3>
 					</div>
 				) : (
-					data.map(({ title, description }, index) => (
-						<div key={index} className="sm:w-[45%] pb-4 bg-slate-200 h-16">
+					data.map(({ title, description, _id }, index) => (
+						<div
+							key={index}
+							className="sm:w-[45%] pb-4 bg-slate-200 h-16 relative"
+						>
 							<h4 className="mt-2 pl-2 text-lg text-lime-700 w-full border-b-red-500 border-b-2">
 								{title}
 							</h4>
 							<h5 className="pl-2 text-base text-black w-full ">
 								{description}
 							</h5>
+							<div className="absolute flex gap-2 right-1 top-0">
+								<button onClick={() => updateTask(_id)}>Update</button>
+								<button onClick={() => deleteTask(_id)}>Delete</button>
+							</div>
 						</div>
 					))
 				)}
