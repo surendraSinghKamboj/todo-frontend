@@ -1,5 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { host } from "../../config";
 
 const Search = () => {
@@ -49,20 +51,35 @@ const Search = () => {
 		}
 	}, [searchTerm, current]);
 
-	//Update function
 	const updateTask = async (id) => {
 		try {
-			const response = await axios.put(`${host}task/${id}`);
-		} catch (error) {}
+			const response = await axios.put(`${host}task/${id}`, {
+				isCompleted: true,
+			});
+			if (response) {
+				toast.info("Update Success");
+			}
+		} catch (error) {
+			toast.error("Update Request failed");
+			console.log(error);
+		}
 	};
 
-	//Delete function
 	const deleteTask = async (id) => {
-		console.log(id);
+		try {
+			const response = await axios.delete(`${host}task/${id}`);
+			if (response) {
+				toast.info("Delete Success");
+			}
+		} catch (error) {
+			toast.error("Delete Request failed");
+			console.log(error);
+		}
 	};
 
 	return (
 		<>
+			<ToastContainer />
 			<div className="flex flex-col justify-center items-center gap-2">
 				<p>Create task</p>
 				<input
@@ -105,10 +122,12 @@ const Search = () => {
 						<h3>You do not have any task</h3>
 					</div>
 				) : (
-					data.map(({ title, description, _id }, index) => (
+					data.map(({ title, description, _id, isCompleted }, index) => (
 						<div
 							key={index}
-							className="sm:w-[45%] pb-4 bg-slate-200 h-16 relative"
+							className={`sm:w-[45%] pb-4 ${
+								isCompleted ? "bg-green-200" : "bg-slate-200"
+							} h-16 relative`}
 						>
 							<h4 className="mt-2 pl-2 text-lg text-lime-700 w-full border-b-red-500 border-b-2">
 								{title}
